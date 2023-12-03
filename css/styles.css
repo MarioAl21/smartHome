@@ -1,0 +1,93 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+  background-color: #f8f8f8;
+}
+
+#app {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #333;
+}
+
+.light-control {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+}
+
+button {
+  padding: 8px 15px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+p {
+  margin: 0;
+  color: #666;
+}
+
+/* Additional styles for the new light panel */
+#newLightPanel {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+#newLightForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+#newLightForm label {
+  margin-bottom: 5px;
+}
+
+#newLightForm input,
+#newLightForm select,
+#newLightForm button {
+  margin-bottom: 10px;
+}
+
+/* Optional: Add some spacing between lights */
+.light-control + .light-control {
+  margin-top: 15px;
+}
+
+ /*Responsive Styles*/ 
+
+@media (max-width: 600px) {
+  #app {
+    padding: 15px;
+  }
+
+  .light-control {
+    padding: 10px;
+  }
+
+  button {
+    padding: 6px 12px;
+    margin-top: 8px;
+  }
+}

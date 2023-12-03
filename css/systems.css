@@ -1,0 +1,18 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.subsystem-control {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+a {
+  color: black;
+  margin-top: 5px;
+  text-decoration: none;
+}
+
+

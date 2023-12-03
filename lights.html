@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Home UI</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/lights.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Lights Smart Home Control</h1>
+
+    <!-- New Light Form -->
+    <div id="newLightPanel">
+      <h2>Add New Light</h2>
+      <form id="newLightForm">
+        <label for="lightName">Light Name:</label>
+        <input type="text" id="lightName" name="lightName" required>
+
+        <label for="initialState">Initial State:</label>
+        <select id="initialState" name="initialState" required>
+          <option value="Turn Off" selected>Turn Off</option>
+          <option value="Turn On">Turn On</option>
+        </select>
+
+	<button type="button" id="addLightButton">Add Light</button>
+      </form>
+    </div>
+
+    <!-- Lights Container -->
+    <div id="lightsContainer"></div>
+  </div>
+</body>
+</html>
