@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Smart Home UI</title>
   <link rel="stylesheet" href="css/styles.css">
-  <script src="js/lights.js"></script>
+  <!-- <script src="js/lights.js"></script> -->
 </head>
 <body>
   <div id="app">
@@ -27,8 +27,8 @@
 
         <label for="initialState">Initial State:</label>
         <select id="initialState" name="initialState" required>
-          <option value="Turn Off" selected>Turn Off</option>
-          <option value="Turn On">Turn On</option>
+          <option value="OFF" selected>Turn Off</option>
+          <option value="ON">Turn On</option>
         </select>
 
 	      <button type="button" id="addLightButton">Add Light</button>
@@ -40,5 +40,6 @@
   </div>
 
   <script src="js/scripts.js"></script>
+  <script src="js/patterns.js"></script>
 </body>
 </html>
