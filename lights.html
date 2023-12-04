@@ -9,12 +9,19 @@
 </head>
 <body>
   <div id="app">
+    <!-- Back to main menu link -->
+    <a href="index.html" id="backToMain">
+      <span id="returnIcon">&#9664;</span>Return
+    </a>
     <h1>Lights Smart Home Control</h1>
 
     <!-- New Light Form -->
-    <div id="newLightPanel">
-      <h2>Add New Light</h2>
-      <form id="newLightForm">
+    <div id="newPanel">
+      <h2>Add New Light<span id="infoIcon">?</span></h2>
+      <div id="infoMessage" style="display: none;"> <!-- Message container -->
+        <p>Enter a unique name of the lights allocation and select the initial state. Click "Add Light" to add a new lights to your smart home.</p>
+      </div>
+      <form id="newForm">
         <label for="lightName">Light Name:</label>
         <input type="text" id="lightName" name="lightName" required>
 
@@ -24,12 +31,14 @@
           <option value="Turn On">Turn On</option>
         </select>
 
-	<button type="button" id="addLightButton">Add Light</button>
+	      <button type="button" id="addLightButton">Add Light</button>
       </form>
     </div>
 
     <!-- Lights Container -->
     <div id="lightsContainer"></div>
   </div>
+
+  <script src="js/scripts.js"></script>
 </body>
 </html>

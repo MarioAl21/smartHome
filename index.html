@@ -4,14 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Smart Home UI</title>
-  <link rel="stylesheet" href="css/systems.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <div id="app">
     <h1>Smart Home Control</h1>
+
+    <!-- New Light Form -->
+    <div id="newPanel">
+      <h2>Add System <span id="infoIcon">?</span></h2>
+      <div id="infoMessage" style="display: none;"> <!-- Message container -->
+        <p>Enter a unique system name and select the initial state. Click "Add System" to add a new system to your smart home.</p>
+      </div> 
+      <form id="newForm">
+        <label for="subName">System Name:</label>
+        <input type="text" id="subName" name="subName" required>
+    
+        <label for="initialState">Initial State:</label>
+        <select id="initialState" name="initialState" required>
+          <option value="Turn Off" selected>Turn Off</option>
+          <option value="Turn On">Turn On</option>
+        </select>
+    
+        <button type="button" id="addSystemButton">Add System</button>
+      </form>
+    </div>
+
     <div id="systemsContainer"></div>
   </div>
 
   <script src="js/systems.js"></script>
+  <script src="js/scripts.js"></script>
 </body>
 </html>

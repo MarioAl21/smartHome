@@ -4,6 +4,56 @@ body {
   background-color: #f8f8f8;
 }
 
+/* Arrow to return to the main page */
+#backToMain {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #0a7bff;
+  font-size: 14px;
+}
+
+#returnIcon:hover {
+  cursor: pointer;
+}
+/***********/
+
+/* Subsystem file */
+.subsystem-control {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+a {
+  font-size: inherit;
+  color: white;
+  text-decoration: none;
+}
+/*******************/
+
+/* Question Mark */
+#infoIcon {
+  display: inline-block;
+  width: 20px;
+  font-size: 15px;
+  background-color: #666;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 5px; /* Adjust the margin as needed */
+}
+
+#infoIcon:hover {
+  background-color: #333; /* Darken the background on hover if desired */
+}
+
+#infoMessage {
+  margin-bottom: 12px;
+}
+/**************/
+
 #app {
   max-width: 800px;
   margin: 0 auto;
@@ -42,11 +92,11 @@ button:hover {
 
 p {
   margin: 0;
-  color: #666;
+  color: #666; 
 }
 
 /* Additional styles for the new light panel */
-#newLightPanel {
+#newPanel {
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 15px;
@@ -54,19 +104,19 @@ p {
   background-color: #f9f9f9;
 }
 
-#newLightForm {
+#newForm {
   display: flex;
   flex-direction: column;
   max-width: 300px;
 }
 
-#newLightForm label {
+#newForm label {
   margin-bottom: 5px;
 }
 
-#newLightForm input,
-#newLightForm select,
-#newLightForm button {
+#newForm input,
+#newForm select,
+#newForm button {
   margin-bottom: 10px;
 }
 

@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
   class UIObserver {
     constructor() {
       this.app = document.getElementById('lightsContainer');
+      this.id = 0;
     }
 
     update(lights) {
@@ -54,11 +55,12 @@ document.addEventListener('DOMContentLoaded', function () {
       this.app.innerHTML = '';
 
       Object.values(lights).forEach(light => {
+        this.id += 1;
         const lightDiv = document.createElement('div');
         lightDiv.className = 'light-control';
         lightDiv.innerHTML = `
           <h2>${light.name}</h2>
-          <p>State: ${light.state}</p>
+          <p id='state${this.id}'>State: ${light.state}</p>
           <button class="turnLights">Turn On/Off</button>
         `;
         this.app.appendChild(lightDiv);
@@ -100,15 +102,11 @@ document.addEventListener('DOMContentLoaded', function () {
   smartHub.addLight('Kitchen Light', kitchenLight);
 
   /* Function to control a light */
-  function controlLight(e) {
-    smartHub.controlLight(kitchenLight, "On");
+  function controlLight(lightName, state) {
+    smartHub.controlLight(lightName, state);
     uiObserver.manualRender(); // Update the UI after controlling the light
+    console.log(lightName);
   }
-
-  function controlLights() {
-   alert("sdfsdf");
-  }
-
 
   // Function to add a new light
   function addNewLight() {
@@ -145,13 +143,24 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   const addLightButton = document.getElementById('addLightButton');
   const turnLightButton = document.querySelectorAll('.turnLights');
-// Add an event listener for the button click
+  // Add an event listener for the button click
   addLightButton.addEventListener('click', addNewLight);
-  
-  turnLightButton.forEach((attack) => {
-   attack.addEventListener("click", (e) => {
-   alert("sdfsdfsdf");
+
+  const turnLightButtons = document.querySelectorAll('.turnLights');
+
+  console.log(turnLightButtons);
+
+  turnLightButtons.forEach(turnLightButton => {
+   turnLightButton.addEventListener("click", (e) => {
+    // Get the light name from the parent element
+    const lightName = e.target.parentNode.querySelector('h2').textContent;
+    alert(lightName);
+    let state = "ON";
+    state = state === "ON" ? "ON" : "OFF";
+    //alert(lightName);
+    // Call the controlLight function with the lightName
+    controlLight(lightName, state);
+   });
   });
- });
   
 });

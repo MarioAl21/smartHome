@@ -40,6 +40,7 @@ class SmartHomeHub {
 const smartHub = new SmartHomeHub();
 const lightsSystem = new Subsystem('Light Control System');
 const emotionsSystem = new Subsystem('Emotion Control System');
+document.getElementById('addSystemButton').addEventListener('click', handleAddSystem);
 
 // Add lights to the hub
 smartHub.addSubsystem('Light Control System', lightsSystem);
@@ -65,6 +66,25 @@ function updateUI() {
 // Function to control systems
 function controlSubsystem(subsystemName, status) {
   smartHub.controlSubsystem (subsystemName, status);
+}
+
+function handleAddSystem() {
+  const systemName = document.getElementById('subName').value;
+  const initialState = document.getElementById('initialState').value;
+
+  // Check if the system name is not empty
+  if (systemName.trim() !== '') {
+    const newSystem = new Subsystem(systemName);
+    newSystem.setState(initialState);
+    
+    // Add the new system to the hub
+    smartHub.addSubsystem(systemName, newSystem);
+
+    // Update the UI
+    updateUI();
+  } else {
+    alert('Please enter a valid system name.');
+  }
 }
 
 // Initial UI update
