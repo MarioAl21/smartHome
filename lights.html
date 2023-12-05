@@ -37,7 +37,21 @@
 
     <!-- Lights Container -->
     <div id="lightsContainer"></div>
-  </div>
+
+    <!-- Lights Control Modes -->
+    <div id="lightsControlModes">
+      <h2>Lights Control Modes</h2>
+      <div>
+        <input type="radio" id="modeOut" name="lightMode" value="out">
+        <label for="modeOut">Mode out of home</label>
+      </div>
+      <div>
+       <input type="radio" id="modeAtHome" name="lightMode" value="home">
+       <label for="modeAtHome">Mode at home</label>
+      </div>
+      <button type="button" id="applyLightMode">Apply Mode</button>
+     </div>
+   </div>
 
   <script src="js/scripts.js"></script>
   <script src="js/lights.js"></script>

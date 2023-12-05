@@ -23,3 +23,18 @@ soundsConfigurationForm.addEventListener('submit', (event) => {
   // Apply sounds configuration (implement your logic here)
   alert(`Sounds Configuration:\nRoom: ${roomSound}\nMood: ${moodSound}\nSound/Music: ${soundSelection}`);
 });
+
+// Recommended Routines
+const recommendationForm = document.getElementById('recommendationForm');
+recommendationForm.addEventListener('click', (event) => {
+  if (event.target.id === 'applyRecommendationButton') {
+    applyRecommendedRoutine();
+  }
+});
+
+function applyRecommendedRoutine() {
+  const selectedRoutine = document.getElementById('recommendedRoutine').value;
+  alert(`Here we go with the routine: ${selectedRoutine} today!`);
+  // Apply the selected routine (implement your logic here)
+  console.log(`Recommended Routine - Selected Routine: ${selectedRoutine}`);
+}

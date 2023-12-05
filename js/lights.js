@@ -236,6 +236,27 @@ function addNewLight() {
   }
 }
 
+// Lights Control Modes
+const lightsControlModes = document.getElementById('lightsControlModes');
+lightsControlModes.addEventListener('click', (event) => {
+  if (event.target.id === 'applyLightMode') {
+    applyLightControlMode();
+  }
+});
+
+function applyLightControlMode() {
+  const selectedMode = document.querySelector('input[name="lightMode"]:checked');
+
+  if (selectedMode) {
+    const modeValue = selectedMode.value;
+    // Apply the selected mode (implement your logic here)
+    alert(`Lights Control Mode - Selected Mode: ${modeValue}`);
+  } else {
+    alert('Please select a mode.');
+  }
+}
+
+
 // Manually render the UI
 uiObserver.manualRender();
 

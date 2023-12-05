@@ -145,7 +145,7 @@ p {
 
 /* Emotions page style */
 /* Add specific styles for the lights configuration page */
-.configurationPanel {
+.configurationPanel, #recommendationPanel, #lightsControlModes {
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 15px;
@@ -153,7 +153,7 @@ p {
   background-color: #f9f9f9;
 }
 
-.configurationForm {
+.configurationForm, #recommendationForm {
   display: flex;
   flex-direction: column;
   max-width: 300px;
