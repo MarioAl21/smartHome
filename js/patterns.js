@@ -32,10 +32,16 @@ class LightsHub {
     addObserver(observer) {
         this.observers.push(observer);
     }
-
     // Removes an observer from the list of observers
     removeObserver(observer) {
+        console.log(observer);
         this.observers = this.observers.filter(obs => obs !== observer);
+    }
+    // Removes a light by name and its corresponding observer
+    removeLight(lightName) {
+        delete this.lights[lightName];
+        this.removeObserver(lightName);
+        this.notifyObservers(); // Notify observers after removing the light
     }
 
     // Notifies all registered observers about the changes in the lights
@@ -49,6 +55,14 @@ class LightsHub {
 class UIObserver {
     constructor() {
       this.app = document.getElementById('lightsContainer'); // The container in the HTML where the lights will be rendered
+      this.observedLights = [];
+    }
+
+    removeLightObserver(lightName) {
+      const index = this.observedLights.indexOf(lightName);
+      if (index !== -1) {
+        this.observedLights.splice(index, 1);
+      }
     }
 
     // Called when the LightsHub notifies observers. It updates the UI with the latest lights.
@@ -67,6 +81,7 @@ class UIObserver {
           <h2>${light.name}</h2>
           <p>State: ${light.state}</p>
           <button class="turnLights">Turn On/Off</button>
+          <button class="removeLight">Remove Light</button>
         `;
         this.app.appendChild(lightDiv);
       });
@@ -122,6 +137,25 @@ lightsContainer.addEventListener('click', (event) => {
          action = 'OFF';
         smartHub.controlLights(lightName, action);
     }
+});
+
+// remove lights
+lightsContainer.addEventListener('click', (event) => {
+  if (event.target.classList.contains('removeLight')) {
+    const lightName = event.target.parentNode.querySelector('h2').textContent;
+
+    // Ask for confirmation before removing the light
+    const confirmation = window.confirm(`Are you sure you want to remove the light "${lightName}"?`);
+
+    if(confirmation) {
+     smartHub.removeLight(lightName);
+     uiObserver.removeLightObserver(lightName);
+     uiObserver.manualRender();
+    }
+    else {
+      console.log("Operation canceled");
+    }
+  }
 });
 
 // Add an event listener for the "Add Light" button
