@@ -54,10 +54,21 @@ function updateUI() {
   Object.values(smartHub.subsystem).forEach(system => {
     const subsystemDiv = document.createElement('div');
     subsystemDiv.className = 'subsystem-control';
+    let page;
+    switch(system.name) {
+      case 'Light Control System':
+        page = "lights.html";
+      break;
+      case 'Emotion Control System':
+        page = "emotions.html";
+      break;
+      default:
+       page = "404.html";
+    }
     subsystemDiv.innerHTML = `
       <h2>${system.name}</h2>
       <p>State: ${system.state}</p>
-      <button><a href="lights.html">Go to system manager</a></button>
+      <button><a href="${page}">Go to system manager</a></button>
     `;
     subsystemContainer.appendChild(subsystemDiv);
   });

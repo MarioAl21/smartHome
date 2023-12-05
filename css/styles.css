@@ -141,3 +141,30 @@ p {
     margin-top: 8px;
   }
 }
+
+
+/* Emotions page style */
+/* Add specific styles for the lights configuration page */
+.configurationPanel {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.configurationForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+.configurationForm label {
+  margin-bottom: 5px;
+}
+
+.configurationForm input,
+.configurationForm select,
+.configurationForm button {
+  margin-bottom: 10px;
+}

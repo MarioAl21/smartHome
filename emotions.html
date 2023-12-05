@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Home UI</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Back to main menu link -->
+    <a href="index.html" id="backToMain">
+      <span id="returnIcon">&#9664;</span>Return
+    </a>
+    <h1>Smart Home Control</h1>
+
+    <!-- New Light Form -->
+    <div id="newPanel">
+      <h2>Add Routine<span id="infoIcon">?</span></h2>
+      <div id="infoMessage" style="display: none;"> <!-- Message container -->
+        <p>Enter a unique name for your routine. Click "Add Routine" to add a new routine to your smart home.</p>
+      </div>
+      <form id="newForm">
+        <label for="lightName">Routine Name:</label>
+        <input type="text" id="lightName" name="lightName" required>
+
+        <label for="description">Description:</label>
+        <textarea name="" id="description" cols="30" rows="10"></textarea>
+
+        <button type="button" id="addRoutine">Add routine</button>
+      </form>
+    </div>
+
+    <!-- Lights Configuration Form -->
+    <div id="lightsConfigurationForm" class="configurationPanel">
+        <h2>Configure Lights Routine</h2>
+        <form class="configurationForm" id="lightsConfigurationForm">
+          <label for="room">Room:</label>
+          <input type="text" id="room" name="room" required placeholder="Enter room name">
+  
+          <label for="mood">Mood:</label>
+          <select id="mood" name="mood" required>
+            <option value="relaxed">Relaxed</option>
+            <option value="energetic">Energetic</option>
+            <option value="focused">Focused</option>
+          </select>
+  
+          <label for="brightness">Brightness:</label>
+          <input type="range" id="brightness" name="brightness" min="0" max="100" step="1" value="50">
+  
+          <label for="color">Color:</label>
+          <input type="color" id="color" name="color" value="#ffffff">
+  
+          <button type="submit" id="applyLightsConfigurationButton">Apply Configuration</button>
+        </form>
+      </div>
+  
+      <!-- Sounds Configuration Form -->
+      <div id="soundsConfigurationForm" class="configurationPanel">
+         <h2>Configure Sounds Routine</h2>
+         <form class="configurationForm" id="soundsConfigurationForm">
+          <label for="roomSound">Room:</label>
+          <input type="text" id="roomSound" name="roomSound" required placeholder="Enter room name">
+  
+          <label for="moodSound">Mood:</label>
+          <select id="moodSound" name="moodSound" required>
+            <option value="calm">Calm</option>
+            <option value="upbeat">Upbeat</option>
+            <option value="productive">Productive</option>
+          </select>
+  
+          <label for="soundSelection">Sound/Music:</label>
+          <select id="soundSelection" name="soundSelection" required>
+            <option value="piano">Piano</option>
+            <option value="guitar">Guitar</option>
+            <option value="nature">Nature Sounds</option>
+          </select>
+  
+          <button type="submit" id="applySoundsConfigurationButton">Apply Configuration</button>
+        </form>
+      </div>
+
+  <script src="js/configuration.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
