@@ -34,7 +34,6 @@ class LightsHub {
   }
   // Removes an observer from the list of observers
   removeObserver(observer) {
-      console.log(observer);
       this.observers = this.observers.filter(obs => obs !== observer);
   }
   // Removes a light by name and its corresponding observer
@@ -78,12 +77,52 @@ class UIObserver {
       const lightDiv = document.createElement('div');
       lightDiv.className = 'light-control';
       lightDiv.innerHTML = `
+        <i class="lightBulbImage ${light.state === 'ON' ? 'fas' : 'far'} fa-lightbulb"></i>
+        <input type="range" class="brightnessControl" min="0" max="100" step="1" value="${light.brightness}">
+        <p>Brightness: <span class="brightnessValue">${light.brightness}</span></p>
         <h2>${light.name}</h2>
         <p>State: ${light.state}</p>
         <button class="turnLights">Turn On/Off</button>
         <button class="removeLight">Remove Light</button>
       `;
       this.app.appendChild(lightDiv);
+
+      // Event listener for turning lights on/off
+      const turnLightsButton = lightDiv.querySelector('.turnLights');
+      turnLightsButton.addEventListener('click', () => {
+        const newState = light.state === 'ON' ? 'OFF' : 'ON';
+        light.setState(newState);
+    
+        // Enable or disable the brightness control based on the state
+        const brightnessControl = lightDiv.querySelector('.brightnessControl');
+        console.log(`Current state: ${newState}`);
+        console.log(brightnessControl.value);
+    
+        if (brightnessControl) {
+          setTimeout(() => {  // Introduce a slight delay
+            if (newState === 'OFF') {
+              brightnessControl.disabled = true;
+              console.log(brightnessControl);
+            } else {
+              brightnessControl.removeAttribute('disabled');
+              console.log(brightnessControl);
+            }
+          }, 100);  // You can adjust the delay time as needed
+        } else {
+          console.error('Brightness control element not found.');
+        }
+      });
+
+      // Event listener for brightness control
+      const brightnessControl = lightDiv.querySelector('.brightnessControl');
+      brightnessControl.addEventListener('input', (event) => {
+          const newBrightness = event.target.value;
+          light.setBrightness(newBrightness);
+
+          // Update the displayed brightness value
+          const brightnessValue = lightDiv.querySelector('.brightnessValue');
+          brightnessValue.textContent = newBrightness;
+      })
     });
   }
 
@@ -98,11 +137,16 @@ class Light {
   constructor(name) {
    this.name = name;
    this.state = 'OFF';
+   this.brightness = 0;
   }
 
   setState(newState) {
    this.state = newState;
-   console.log(`${this.name} is now ${this.state}.`);
+  }
+
+  // New method to set brightness
+  setBrightness(newBrightness) {
+    this.brightness = newBrightness;
   }
 }
 
@@ -129,7 +173,6 @@ const lightsContainer = document.getElementById('lightsContainer');
 let state = false;
 lightsContainer.addEventListener('click', (event) => {
   if (event.target.classList.contains('turnLights')) {
-      //console.log(event.target);
       const lightName = event.target.parentNode.querySelector('h2').textContent;
       state = state ^ true;
       let action = 'ON';
@@ -169,6 +212,11 @@ function addNewLight() {
 
   const newLightName = lightNameInput.value.trim();
   const newLightState = initialStateSelect.value;
+
+  if (smartHub.lights[newLightName]) {
+    alert(`The light name "${newLightName}" is already taken. Please choose a unique name.`);
+    return; // Stop the function if the name is not unique
+  }
 
   if (newLightName && newLightState) {
     const newLight = new Light(newLightName);
